@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizz_game/pages/number_confirm_page_1.2.dart';
 import 'package:quizz_game/utils/fonts.dart';
 import 'package:quizz_game/utils/project_images.dart';
+import 'package:quizz_game/widgets/text_filed.dart';
 
 import '../widgets/navigator_widget.dart';
 
@@ -37,27 +38,9 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ),
                 ),
-              ), //pic
-              Container(
-                margin: EdgeInsets.only(top: 50),
-                padding: EdgeInsets.only(left: 12),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey)
-                ),
-                height: 50,
-                width: 300,
-                child: Center(
-                  child: TextField(
-                    controller: controller,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Enter your mobile number",
-                      hintStyle: MyFonts.F_18.copyWith(color: Colors.grey),
-                    ),
-
-                  ),
-                ),
               ),
+              SizedBox(height: 50,),//pic
+              textfield("Enter your mobile number"),
               SizedBox(height: 28,),//Enter mobile number
               navigator("Login",context,NumberConfirm()),
               SizedBox(height: 230,),

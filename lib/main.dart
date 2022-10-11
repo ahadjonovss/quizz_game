@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_game/pages/login_page_1.1.dart';
+import 'package:quizz_game/pages/register_page_1.3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home:LoginPage() ,
+      home:RegisterPage() ,
     );
   }
 }

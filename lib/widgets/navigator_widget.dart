@@ -8,8 +8,8 @@ Widget navigator(String str,BuildContext context,dynamic Page){
         Navigator.push(context, MaterialPageRoute(builder: (context)=>Page));
       },
       child: Container(
-        height: 50,
-        width: 250,
+        height: 60,
+        width: 270,
         decoration: BoxDecoration(
           color: Color(0xFFFCA82F),
           borderRadius: BorderRadius.circular(4)

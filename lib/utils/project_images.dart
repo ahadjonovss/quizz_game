@@ -4,4 +4,7 @@ class MyImages{
   static const center_pic="assets/images/center.png";
   static const intro_pic="assets/images/intro_pic.png";
   static const logo="assets/images/logo.png";
+
+  //svg
+  static const logo_svg="assets/images/logo.svg";
 }
