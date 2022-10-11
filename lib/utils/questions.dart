@@ -1,3 +1,4 @@
+
 import 'package:quizz_game/models/option_model.dart';
 import 'package:quizz_game/models/question_model.dart';
 
@@ -35,4 +36,27 @@ List<Question> all_questions=[
             title: "Cho’plardan  "),
         Option(
             title: "Abak ")]),
+  Question(
+      title: "CD-dicklar Axborot sig’imini ko’rsating?",
+      options: [
+        Option(
+            title: "100-200"),
+        Option(
+            title: "620-720 "),
+        Option(
+            title: "680-720",isTrue: true),
+        Option(
+            title: "400-200")]),
+  Question(
+      title: "Tashqi   xotirada biror nom bilan saqlab qo’yilgan har qanday ma’lumot…",
+      options: [
+        Option(
+            title: "Katalog"),
+        Option(
+            title: "Fayl",isTrue: true),
+        Option(
+            title: "Ma'lumot"),
+        Option(
+            title: "Interfeys")]),
+
 ];

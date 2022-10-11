@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizz_game/pages/game_play.dart';
 import 'package:quizz_game/pages/login_page_1.1.dart';
 import 'package:quizz_game/pages/register_page_1.3.dart';
+import 'package:quizz_game/pages/test_menu.dart';
 import 'package:quizz_game/utils/questions.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home:GamePlay(questions: all_questions) ,
+      home: RegisterPage(),
     );
   }
 }

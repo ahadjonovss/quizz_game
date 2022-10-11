@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quizz_game/pages/home_page_2.0.dart';
 import 'package:quizz_game/pages/register_page_1.3.dart';
+import 'package:quizz_game/pages/test_menu.dart';
 import 'package:quizz_game/utils/project_images.dart';
 import 'package:quizz_game/widgets/navigator_widget.dart';
 
@@ -33,7 +34,7 @@ class _NumberConfirmState extends State<NumberConfirm> {
               SizedBox(height: 38,),
               Text("_ _ _ _ _ _",style: MyFonts.F_18.copyWith(fontSize: 32)),
               SizedBox(height: 40,),
-              navigator("Login", context, HomePage()),
+              navigator("Login", context, TestMenu()),
               SizedBox(height: 10,),
               Text("login with social media",style: MyFonts.F_18.copyWith(color: Colors.grey,fontSize: 18),),
               Center(

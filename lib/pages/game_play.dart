@@ -79,7 +79,7 @@ class _GamePlayState extends State<GamePlay> {
               ),//indicator
               SizedBox(height: 20,),
               Container(
-                margin: EdgeInsets.only(left: 40),
+                margin: EdgeInsets.only(left: 40,right: 20),
                 height: 600,
                 width: 400,
                 child: Column(
