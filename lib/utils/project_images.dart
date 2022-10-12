@@ -9,4 +9,9 @@ class MyImages{
 
   //svg
   static const logo_svg="assets/images/logo.svg";
+
+  //icons
+
+  static const book="assets/icons/book.png";
+  static const cup="assets/icons/cup.png";
 }

@@ -64,7 +64,6 @@ class _GamePlayState extends State<GamePlay> {
               SizedBox(height: 18,),
               Container(
                 margin: EdgeInsets.only(left: 40),
-                padding: EdgeInsets.only(left: 10),
                 width: 300,
                 height: 40,
                 decoration: BoxDecoration(
@@ -88,6 +87,7 @@ class _GamePlayState extends State<GamePlay> {
                             ]
                         ),),
                       top: 10,
+                      left: 50,
                     ),
                     AnimatedPositioned(
                       duration: Duration(milliseconds: 500),
@@ -103,15 +103,35 @@ class _GamePlayState extends State<GamePlay> {
                           ),
                         ),
                       top: 10,
+                      left: 50,
                     ),
                     Positioned(
                         child: Text("${widget.currentQuestion+1}/${widget.questions.length}"),
                     top: 10,
-                    right: 15,)
+                    right: 15,),
+                    Positioned(
+                      top: 6,
+                      left: 10,
+                      child: timer(start),),
+                    Positioned(
+                      top: 1,
+                      right: 262,
+                      child: TweenAnimationBuilder<double>(
+                        builder: (BuildContext context, value, Widget? child) {
+                          return CircularProgressIndicator(
+                            strokeWidth: 2,
+                            backgroundColor: Colors.transparent,
+                            color: Colors.red,
+                            value: value,
+                          );
+                        },
+                        tween: Tween<double>(begin: 0.0, end: start / 15),
+                        duration: Duration(seconds: 1),
+                      ),
+                    )
                   ]
                 ),
               ),//progress
-              timer(start),
               SizedBox(height: 20,),
               Container(
                 margin: EdgeInsets.only(left: 40,right: 20),

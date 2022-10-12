@@ -8,7 +8,7 @@ Widget timer(int time){
       time.toString().length == 1
           ? "0" + time.toString()
           : time.toString(),
-      style: TextStyle(fontSize: 32),
+      style: TextStyle(fontSize: 16),
       textAlign: TextAlign.center,
     ),
   );
