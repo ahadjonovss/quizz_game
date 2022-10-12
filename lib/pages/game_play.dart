@@ -38,6 +38,7 @@ class _GamePlayState extends State<GamePlay> {
           else{
             next();
             start=15;
+
           }
 
 
@@ -201,7 +202,7 @@ class _GamePlayState extends State<GamePlay> {
         widget.result[widget.currentQuestion+1]=q_result.contains(true)?"Correct":"Incorrect";
         if(widget.currentQuestion!=widget.questions.length-1){
           widget.currentQuestion++;
-          start+=15;
+          start=15;
         }
 
 

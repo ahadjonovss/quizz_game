@@ -121,58 +121,58 @@ List<Question> mt_questions=[
 
 List<Question> history_questions=[
   Question(
-      title: "Hisoblash texnikasi nechta davrni o’z ichiga oladi?",
+      title: "3. O`rta Osiyoda tuzilgan quyidagi qaysi davlatga saklar tomonidan asos solingan? ",
       options: [
         Option(
-            title: "4",isTrue: true),
+            title: " Qang’",isTrue: true),
         Option(
-            title: "5"),
+            title: "Dovon"),
         Option(
-            title: "6"),
+            title: "Kushon"),
         Option(
-            title: "7")]),
+            title: "Xorazm")]),
   Question(
-      title: "Mehanik mashinalar davri nechanchi yildan boshlandi?",
+      title: "Qaysi voqeadan so‘ng Jaloliddinning harbiy kuchi kuchsizlanib qoladi?",
       options: [
         Option(
-            title: "1923-yil",isTrue: true),
+            title: "Parvon dashtidagi g‘alabadan so‘ng",isTrue: true),
         Option(
-            title: "1925-yil"),
+            title: " Sind daryosi bo‘yida bo’lgan jangdan so‘ng"),
         Option(
-            title: "1929-yil"),
+            title: "Valiyon qal’asi yonida bo’lgan jangdan so‘ng"),
         Option(
-            title: "1930-yil")]),
+            title: "“Cho’li Jaloliy” da bo’lgan jangdan so‘ng")]),
   Question(
-      title: " Insoniyat dastlabki xisoblash vositasi sifatida nimadan foydalangan?",
+      title: "Tarixda “Loy jangi” nomi bilan shuhrat topgan jang nechanchi yilda bo’lib o’tgan?",
       options: [
         Option(
-            title: "Xisoblash mashinkadan"),
+            title: "1364-yil"),
         Option(
-            title: "Barmoqlardan",isTrue: true),
+            title: "1365-yilda",isTrue: true),
         Option(
-            title: "Cho’plardan  "),
+            title: "1395-yilda "),
         Option(
-            title: "Abak ")]),
+            title: "1402-yilda")]),
   Question(
-      title: "CD-dicklar Axborot sig’imini ko’rsating?",
+      title: "Qaysi daryo qadimda Yaksart deb atalgan?",
       options: [
         Option(
-            title: "100-200"),
+            title: "Amudaryo"),
         Option(
-            title: "620-720 "),
+            title: "Zarafshon"),
         Option(
-            title: "680-720",isTrue: true),
+            title: " Sirdaryo",isTrue: true),
         Option(
-            title: "400-200")]),
+            title: "Qashqadaryo")]),
   Question(
-      title: "Tashqi   xotirada biror nom bilan saqlab qo’yilgan har qanday ma’lumot…",
+      title: "Qadimgi Xorazmda shaharsozlik qachon boshlangan? ",
       options: [
         Option(
-            title: "Katalog"),
+            title: "Mil.avv Vl asr"),
         Option(
-            title: "Fayl",isTrue: true),
+            title: "Mil.avv VII asr ",isTrue: true),
         Option(
-            title: "Ma'lumot"),
+            title: "Mil.avv Vlll asr"),
         Option(
-            title: "Interfeys")]),
+            title: "Mil.avv Xl asr")]),
 ];
