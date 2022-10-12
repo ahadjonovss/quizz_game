@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quizz_game/utils/fonts.dart';
 import 'package:quizz_game/utils/project_images.dart';
+import 'package:quizz_game/utils/questions.dart';
 import 'package:quizz_game/widgets/test_widget.dart';
 
 class TestMenu extends StatelessWidget {
@@ -39,9 +40,9 @@ class TestMenu extends StatelessWidget {
                   )
                 ),
               ),
-              test_banner(context),
-              test_banner(context),
-              test_banner(context),
+              test_banner(context,programming_questions,Colors.redAccent,"Programming"),
+              test_banner(context,mt_questions,Colors.blueAccent,"Mother\ntongue"),
+              test_banner(context,history_questions,Colors.deepPurpleAccent,"History"),
 
             ],
           ),

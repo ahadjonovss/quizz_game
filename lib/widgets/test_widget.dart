@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quizz_game/models/question_model.dart';
 import 'package:quizz_game/pages/game_play.dart';
 import 'package:quizz_game/utils/questions.dart';
 
 import '../utils/fonts.dart';
 
-Widget test_banner(BuildContext context){
+Widget test_banner(BuildContext context, List<Question> questions,Color clr,String name){
   return InkWell(
     onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>GamePlay(questions: all_questions)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>GamePlay(questions: questions)));
     },
     child: Container(
       margin: EdgeInsets.all(5),
@@ -17,8 +18,8 @@ Widget test_banner(BuildContext context){
       decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Colors.redAccent,
-                Colors.redAccent.withOpacity(0.8)
+                clr,
+                clr.withOpacity(0.8)
               ]
           ),
           borderRadius: BorderRadius.circular(20)
@@ -29,8 +30,8 @@ Widget test_banner(BuildContext context){
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Programming\ntest",style: MyFonts.F_18.copyWith(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w600),),
-              Text("Unlimited\nhours",style: MyFonts.F_18.copyWith(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w600),),
+              Text(name,style: MyFonts.F_18.copyWith(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w600),),
+              Text("${questions.length*15/60}\nminutes",style: MyFonts.F_18.copyWith(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w600),),
               Text("\$500",style: MyFonts.F_18.copyWith(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w600),),
 
 

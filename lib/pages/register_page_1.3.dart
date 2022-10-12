@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quizz_game/pages/home_page_2.0.dart';
 import 'package:quizz_game/pages/login_page_1.1.dart';
+import 'package:quizz_game/pages/test_menu.dart';
 import 'package:quizz_game/widgets/text_filed.dart';
 
 import '../utils/fonts.dart';
@@ -38,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 20,),
                 textfield("Confirm Password"),
                 SizedBox(height: 50,),
-                navigator("Register",context,HomePage()),
+                navigator("Register",context,TestMenu()),
                 SizedBox(height: 20,),
                 InkWell(
                   onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));},

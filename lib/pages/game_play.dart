@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:quizz_game/models/question_model.dart';
 import 'package:quizz_game/pages/result_page.dart';
 import 'package:quizz_game/utils/fonts.dart';
+import 'package:quizz_game/widgets/timer_widget.dart';
 
 import '../models/option_model.dart';
 
@@ -10,17 +13,44 @@ class GamePlay extends StatefulWidget {
   int currentQuestion=0;
   String nextButton="Next";
   Map<int,String> result={};
+
+
+
+
   GamePlay({Key? key,required this.questions}) : super(key: key);
+
 
   @override
   State<GamePlay> createState() => _GamePlayState();
 }
 
 class _GamePlayState extends State<GamePlay> {
+  int start=15;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Timer.periodic(Duration(seconds: 1), (timer) {
+        setState(() {
+          if(start!=0)
+          start--;
+          else{
+            next();
+            start=15;
+          }
+
+
+        });
+    }
+    );
+  }
+
   void ontap() {
     setState(() {
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +89,12 @@ class _GamePlayState extends State<GamePlay> {
                         ),),
                       top: 10,
                     ),
-                    Positioned(
-                      child: Container(
+                    AnimatedPositioned(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.bounceInOut,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
                           height: 20,
                           width: widget.currentQuestion*(200/widget.questions.length),
                           decoration: BoxDecoration(
@@ -76,11 +110,11 @@ class _GamePlayState extends State<GamePlay> {
                     right: 15,)
                   ]
                 ),
-              ),//indicator
+              ),//progress
+              timer(start),
               SizedBox(height: 20,),
               Container(
                 margin: EdgeInsets.only(left: 40,right: 20),
-                height: 600,
                 width: 400,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,38 +127,7 @@ class _GamePlayState extends State<GamePlay> {
                     options(widget.questions[widget.currentQuestion].options[3],ontap),
                     InkWell(
                     onTap: () {
-                      if(widget.nextButton=="Finish"){
-                        if(widget.result.length!=widget.questions.length)
-                          {
-                            List q_result=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected==true && e.isTrue==true).toList();
-                            widget.result[widget.currentQuestion+1]=q_result.contains(true)?"Correct":"Incorrect";
-                          }
-                        print(widget.result);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultPage(results: widget.result)));
-                      }
-                      if(widget.currentQuestion==widget.questions.length-2)
-                        widget.nextButton="Finish";
-                      int falses=0;
-                      List selecteds=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected).toList();
-                      selecteds.forEach((element) {
-                        if(element==false)
-                          falses++;
-                      });
-                      if(falses==3){
-                        setState(() {
-                          List q_result=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected==true && e.isTrue==true).toList();
-                          widget.result[widget.currentQuestion+1]=q_result.contains(true)?"Correct":"Incorrect";
-                          if(widget.currentQuestion!=widget.questions.length-1)
-                          widget.currentQuestion++;
-
-                        });
-                      }
-                      if(falses<3 || falses==4){
-                        var snackBar = SnackBar(
-                          dismissDirection: DismissDirection.horizontal,
-                            content: Text(falses<4?'Faqatgina bitta javobni tanlang!':"Javob tanlanmadi!",style: TextStyle(color: Colors.red),));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
+                      next();
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 16,top: 50),
@@ -141,13 +144,61 @@ class _GamePlayState extends State<GamePlay> {
 
                   ],
                 ),
-              )
+              ) //question
 
             ],
           ),
         ),
       ),
     );
+  }
+  void next(){
+    if(widget.nextButton=="Finish"){
+      if(widget.result.length!=widget.questions.length)
+      {
+        List q_result=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected==true && e.isTrue==true).toList();
+        widget.result[widget.currentQuestion+1]=q_result.contains(true)?"Correct":"Incorrect";
+      }
+      print(widget.result);
+      for(int i=0;i<widget.questions.length;i++){
+        for(int j=0;j<widget.questions[i].options.length;j++){
+          widget.questions[i].options[j].isSelected=false;
+        }
+      }
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ResultPage(results: widget.result)));
+    }
+    if(widget.currentQuestion==widget.questions.length-2)
+      widget.nextButton="Finish";
+    int falses=0;
+    List selecteds=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected).toList();
+    selecteds.forEach((element) {
+      if(element==false)
+        falses++;
+    });
+    if(falses==3){
+      setState(() {
+        List q_result=widget.questions[widget.currentQuestion].options.map((e) => e.isSelected==true && e.isTrue==true).toList();
+        widget.result[widget.currentQuestion+1]=q_result.contains(true)?"Correct":"Incorrect";
+        if(widget.currentQuestion!=widget.questions.length-1){
+          widget.currentQuestion++;
+          start+=15;
+        }
+
+
+      });
+    }
+    if(falses<3 || falses==4){
+      if(falses==4){
+        widget.result[widget.currentQuestion+1]="Incorrect";
+        if(widget.currentQuestion!=widget.questions.length-1)
+          widget.currentQuestion++;
+
+      }
+      var snackBar = SnackBar(
+          dismissDirection: DismissDirection.horizontal,
+          content: Text(falses<4 && widget.nextButton!="Finish"?'Faqatgina bitta javobni tanlang!':"Javob tanlanmadi!",style: TextStyle(color: Colors.red),));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 }
 
@@ -177,3 +228,8 @@ Widget options(Option myoption,Function set){
     ),
   );
 }
+
+
+
+
+

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../utils/fonts.dart';
 
 Widget result_answer(String result,int index){
-  return Container(
+  return AnimatedContainer(
+    duration: Duration(milliseconds: 500),
+    curve: Curves.ease,
     margin: EdgeInsets.only(top: 20),
     padding: EdgeInsets.all(8),
     width: 300,
@@ -18,7 +20,9 @@ Widget result_answer(String result,int index){
           )
         ]
     ),
-    child: Container(
+    child: AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
       margin: EdgeInsets.only(left: 4),
       child: Row(children:[
         Text("$index-answer:            ${result}",style: MyFonts.F_18.copyWith(fontSize: 16),),
